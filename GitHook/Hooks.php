@@ -29,7 +29,7 @@ class Hooks
             #!/usr/bin/php
             <?php
             require __DIR__ . \'/../../vendor/autoload.php\';
-            use AppBundle\Git\Hook\Prepush;
+            use Bourdeau\Bundle\GitHookBundle\GitHook\Prepush;
             $console = new Prepush();
             $console->run();
         ';

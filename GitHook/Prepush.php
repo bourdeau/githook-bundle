@@ -85,7 +85,7 @@ class Prepush extends Application
      */
     private function welcome($output)
     {
-        $output->writeln("<info>☺ ☺ ☺ ☺ ☺ ☺ ☺ ☺  WILKOMEN IN NAZI TOOL v0.0.1 ☺ ☺ ☺ ☺ ☺ ☺ ☺ ☺</info>");
+        $output->writeln("<info>☺ ☺ ☺ ☺ ☺ ☺ ☺ ☺  WELCOME TO GITHOOK v0.0.1 ☺ ☺ ☺ ☺ ☺ ☺ ☺ ☺</info>");
 
         $output->writeln("");
         $output->writeln(sprintf("<nice>HELLO %s!</nice>", $this->author));
@@ -114,14 +114,14 @@ class Prepush extends Application
      */
     private function checkStyle($string, $output)
     {
-        $output->writeln(sprintf("<blue>2)- Dirty '%s' you might have left</blue>", $string));
+        $output->writeln(sprintf("<blue>2)- Filthy '%s' you might have left</blue>", $string));
         $output->writeln("");
 
         $flagFound = shell_exec(sprintf("git grep --color %s HEAD -- `git ls-files | grep -v src/AppBundle/Git/`", $string));
 
         if ($flagFound) {
             $output->writeln($flagFound);
-            $output->writeln("<error>☠ ☠ ☠ You left some crap code. Clean your shit. Thanks :) ☠ ☠ ☠ </error>");
+            $output->writeln("<error>☠ ☠ ☠ You left some crap. Clean your mess. Thanks :) ☠ ☠ ☠ </error>");
             exit(1);
         }
 
@@ -221,11 +221,6 @@ class Prepush extends Application
      */
     private function getAuthor($commitId)
     {
-        // Jenkins user can do everything
-        if ($this->logName === "jenkins") {
-            exit(0);
-        }
-
         $data = shell_exec(sprintf('git cat-file -p %s', $commitId));
 
         if (!preg_match("/author (.*) <(.*)>/", $data, $matches)) {
@@ -234,10 +229,5 @@ class Prepush extends Application
 
         $this->author = $matches[1];
         $this->email = $matches[2];
-
-        // In case logname didn't work
-        if ($this->email === 'gitlab@gitlab') {
-            exit(0);
-        }
     }
 }
