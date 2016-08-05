@@ -1,0 +1,26 @@
+{
+    "name": "bourdeau/githook-bundle",
+    "type": "symfony-bundle",
+    "description": "GitHook Bundle for Symfony3",
+    "homepage": "http://github.com/bourdeau/githook-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pierre-Henri Bourdeau",
+            "email": "phbasic@gmail.com",
+            "homepage": "https://github.com/bourdeau"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "symfony/framework-bundle": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.3.4",
+    },
+    "autoload": {
+        "psr-4": {
+            "Bourdeau\\Bundle\\HandEvaluatorBundle\\": ""
+        }
+    }
+}
