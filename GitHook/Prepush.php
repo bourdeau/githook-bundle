@@ -57,7 +57,6 @@ class Prepush extends Application
     public function doRun(InputInterface $input, OutputInterface $output)
     {
         $output = $this->createStyles($output);
-        $this->checkBranch($output);
 
         // Welcome
         $this->welcome($output);
@@ -166,19 +165,6 @@ class Prepush extends Application
     private function checkGitStats(): string
     {
         return shell_exec("git diff --stat --cached origin/master");
-    }
-
-    /**
-     * Check if client is allowed to push on branch
-     *
-     * @param OutputInterface $output
-     */
-    private function checkBranch($output)
-    {
-        if ($this->remoteRef !== 'refs/heads/master') {
-            $output->writeln("<error>☠ ☠ ☠ You can only push to master! ☠ ☠ ☠ </error>");
-            exit(1);
-        }
     }
 
     /**
