@@ -30,6 +30,10 @@ class Prepush extends Application
     {
         parent::__construct('Nazi Tool :)', 'v.0.0.1');
 
+        if (is_bool(fgets(STDIN))) {
+            exit(0);
+        }
+
         $line = trim(fgets(STDIN));
         $args = explode(" ", $line);
 
